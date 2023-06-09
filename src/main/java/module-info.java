@@ -5,5 +5,6 @@ module app.emailclient {
 
 
     opens app.emailclient to javafx.fxml;
+    opens app.emailclient.controller to javafx.fxml;
     exports app.emailclient;
 }

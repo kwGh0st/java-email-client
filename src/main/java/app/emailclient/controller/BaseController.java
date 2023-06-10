@@ -4,8 +4,8 @@ import app.emailclient.EmailManager;
 import app.emailclient.view.ViewFactory;
 
 public abstract class BaseController {
-    private ViewFactory viewFactory;
-    private EmailManager emailManager;
+    protected ViewFactory viewFactory;
+    protected EmailManager emailManager;
     private String fxmlName;
 
     public BaseController(){}

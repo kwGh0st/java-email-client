@@ -27,7 +27,6 @@ public class LoginWindowController extends BaseController {
     @FXML
     private Label passwordLabel;
 
-    public LoginWindowController(){}
 
     public LoginWindowController(ViewFactory viewFactory, EmailManager emailManager, String fxmlName) {
         super(viewFactory, emailManager, fxmlName);

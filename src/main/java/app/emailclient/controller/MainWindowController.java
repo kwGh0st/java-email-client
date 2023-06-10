@@ -21,9 +21,12 @@ public class MainWindowController extends BaseController {
     @FXML
     private MenuBar menuBar;
 
-    public MainWindowController(){}
-
     public MainWindowController(ViewFactory viewFactory, EmailManager emailManager, String fxmlName) {
         super(viewFactory, emailManager, fxmlName);
+    }
+
+    @FXML
+    public void onOptionsButtonAction() {
+        viewFactory.showOptionsWindow();
     }
 }

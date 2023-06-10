@@ -1,14 +1,20 @@
 package app.emailclient.controller;
 
 import app.emailclient.EmailManager;
+import app.emailclient.view.ColorTheme;
 import app.emailclient.view.ViewFactory;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
-public class OptionsWindowController extends BaseController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class OptionsWindowController extends BaseController implements Initializable {
 
     @FXML
     private Button ApplyButton;
@@ -26,7 +32,7 @@ public class OptionsWindowController extends BaseController {
     private Label themeLabel;
 
     @FXML
-    private ChoiceBox<?> themePicker;
+    private ChoiceBox<ColorTheme> themePicker;
 
     @FXML
     private Label titleLabel;
@@ -43,5 +49,15 @@ public class OptionsWindowController extends BaseController {
     @FXML
     void onCancelButtonAction() {
 
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        setUpThemePicker();
+    }
+
+    private void setUpThemePicker() {
+        themePicker.setItems(FXCollections.observableArrayList(ColorTheme.values()));
+        themePicker.setValue(viewFactory.getColorTheme());
     }
 }

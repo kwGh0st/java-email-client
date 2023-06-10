@@ -14,8 +14,8 @@ import java.io.IOException;
 
 public class ViewFactory {
     private EmailManager emailManger;
-
-    public ViewFactory(){}
+    private ColorTheme colorTheme = ColorTheme.DEFAULT;
+    private FontSize fontSize = FontSize.MEDIUM;
 
     public ViewFactory(EmailManager emailManger) {
         this.emailManger = emailManger;
@@ -57,5 +57,13 @@ public class ViewFactory {
 
     public void closeStage(Stage stageToClose) {
         stageToClose.close();
+    }
+
+    public ColorTheme getColorTheme() {
+        return colorTheme;
+    }
+
+    public FontSize getFontSize() {
+        return fontSize;
     }
 }

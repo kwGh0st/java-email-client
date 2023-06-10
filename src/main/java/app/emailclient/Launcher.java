@@ -11,8 +11,7 @@ import java.io.IOException;
 public class Launcher extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        ViewFactory viewFactory = new ViewFactory();
-        viewFactory.showLoginWindow();
+        new ViewFactory(new EmailManager()).showLoginWindow();
 
     }
 

@@ -15,4 +15,8 @@ public abstract class BaseController {
         this.emailManager = emailManager;
         this.fxmlName = fxmlName;
     }
+
+    public String getFxmlName() {
+        return fxmlName;
+    }
 }

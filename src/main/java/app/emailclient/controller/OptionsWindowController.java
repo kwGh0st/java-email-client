@@ -2,6 +2,7 @@ package app.emailclient.controller;
 
 import app.emailclient.EmailManager;
 import app.emailclient.view.ColorTheme;
+import app.emailclient.view.FontSize;
 import app.emailclient.view.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.util.StringConverter;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -54,6 +56,33 @@ public class OptionsWindowController extends BaseController implements Initializ
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setUpThemePicker();
+        setUpFontSlider();
+    }
+
+    private void setUpFontSlider() {
+        fontSlider.setMin(0);
+        fontSlider.setMax(FontSize.values().length - 1);
+        fontSlider.setValue(viewFactory.getFontSize().ordinal());
+        fontSlider.setMajorTickUnit(1);
+        fontSlider.setMinorTickCount(0);
+        fontSlider.setBlockIncrement(1);
+        fontSlider.setSnapToTicks(true);
+        fontSlider.setShowTickMarks(true);
+        fontSlider.setShowTickLabels(true);
+        fontSlider.setLabelFormatter(new StringConverter<>() {
+            @Override
+            public String toString(Double object) {
+                int i = object.intValue();
+                return FontSize.values()[i].toString();
+            }
+
+            @Override
+            public Double fromString(String string) {
+                return null;
+            }
+        });
+
+        fontSlider.valueProperty().addListener((obs, oldVal, newVal) -> fontSlider.setValue(newVal.intValue()));
     }
 
     private void setUpThemePicker() {

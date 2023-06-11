@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import java.net.URL;
@@ -45,12 +46,14 @@ public class OptionsWindowController extends BaseController implements Initializ
 
     @FXML
     void onApplyButtonAction() {
-
+        viewFactory.setColorTheme(themePicker.getValue());
+        viewFactory.setFontSize(FontSize.values()[(int) fontSlider.getValue()]);
     }
 
     @FXML
     void onCancelButtonAction() {
-
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        viewFactory.closeStage(stage);
     }
 
     @Override

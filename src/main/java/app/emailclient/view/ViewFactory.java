@@ -66,4 +66,12 @@ public class ViewFactory {
     public FontSize getFontSize() {
         return fontSize;
     }
+
+    public void setColorTheme(ColorTheme colorTheme) {
+        this.colorTheme = colorTheme;
+    }
+
+    public void setFontSize(FontSize fontSize) {
+        this.fontSize = fontSize;
+    }
 }

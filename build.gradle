@@ -12,7 +12,7 @@ repositories {
 }
 
 ext {
-    junitVersion = '5.7.1'
+    junitVersion = '5.9.2'
 }
 
 sourceCompatibility = '16'
@@ -34,6 +34,8 @@ javafx {
 
 dependencies {
 
+    implementation 'javax.mail:javax.mail-api:1.6.2'
+    implementation 'com.sun.activation:javax.activation:1.2.0'
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }

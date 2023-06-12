@@ -2,8 +2,7 @@ module app.emailclient {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
-    requires activation;
-    requires java.mail;
+    requires javax.mail.api;
 
 
     opens app.emailclient to javafx.fxml;

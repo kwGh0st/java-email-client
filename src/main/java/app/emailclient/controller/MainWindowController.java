@@ -4,6 +4,7 @@ import app.emailclient.EmailManager;
 import app.emailclient.view.ViewFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
 import javafx.scene.web.WebView;
@@ -21,6 +22,9 @@ public class MainWindowController extends BaseController {
     @FXML
     private MenuBar menuBar;
 
+    @FXML
+    private MenuItem addAccountButton;
+
     public MainWindowController(ViewFactory viewFactory, EmailManager emailManager, String fxmlName) {
         super(viewFactory, emailManager, fxmlName);
     }
@@ -28,5 +32,10 @@ public class MainWindowController extends BaseController {
     @FXML
     public void onOptionsButtonAction() {
         viewFactory.showOptionsWindow();
+    }
+
+    @FXML
+    void onAddAccountAction() {
+        viewFactory.showLoginWindow();
     }
 }

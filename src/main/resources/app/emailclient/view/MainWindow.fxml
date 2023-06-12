@@ -11,11 +11,12 @@
 
 <AnchorPane prefHeight="657.0" prefWidth="1053.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <MenuBar fx:id="menuBar" layoutX="7.0" layoutY="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar fx:id="menuBar" layoutX="7.0" layoutY="8.0" AnchorPane.bottomAnchor="632.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem fx:id="addAccountButton" mnemonicParsing="false" onAction="#onAddAccountAction" text="Add account" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
@@ -30,8 +31,8 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TreeView fx:id="emailTreeView" layoutX="-1.0" layoutY="24.0" prefHeight="633.0" prefWidth="209.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="844.0" AnchorPane.topAnchor="24.0" />
-      <TableView fx:id="emailTableView" layoutX="209.0" layoutY="25.0" prefHeight="200.0" prefWidth="844.0" AnchorPane.bottomAnchor="432.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+      <TreeView fx:id="emailTreeView" layoutX="-1.0" layoutY="24.0" prefHeight="633.0" prefWidth="209.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="24.0" />
+      <TableView fx:id="emailTableView" layoutX="209.0" layoutY="25.0" prefHeight="200.0" prefWidth="844.0" AnchorPane.bottomAnchor="432.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Sender" />
           <TableColumn prefWidth="388.0" text="Subject" />
@@ -40,6 +41,6 @@
             <TableColumn prefWidth="150.0" text="Date" />
         </columns>
       </TableView>
-      <WebView fx:id="emailWebView" layoutX="209.0" layoutY="225.0" prefHeight="432.0" prefWidth="844.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <WebView fx:id="emailWebView" layoutX="209.0" layoutY="225.0" prefHeight="432.0" prefWidth="844.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

@@ -11,14 +11,18 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ViewFactory {
     private EmailManager emailManger;
     private ColorTheme colorTheme = ColorTheme.DEFAULT;
     private FontSize fontSize = FontSize.MEDIUM;
+    private List<Stage> activeStages;
 
     public ViewFactory(EmailManager emailManger) {
         this.emailManger = emailManger;
+        this.activeStages = new ArrayList<>();
     }
 
     public void showLoginWindow() {
@@ -53,10 +57,13 @@ public class ViewFactory {
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.show();
+        activeStages.add(stage);
+        updateStyles();
     }
 
     public void closeStage(Stage stageToClose) {
         stageToClose.close();
+        activeStages.remove(stageToClose);
     }
 
     public ColorTheme getColorTheme() {
@@ -73,5 +80,15 @@ public class ViewFactory {
 
     public void setFontSize(FontSize fontSize) {
         this.fontSize = fontSize;
+    }
+
+    public void updateStyles() {
+        for (Stage stage : activeStages) {
+            Scene scene = stage.getScene();
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(getClass().getResource(ColorTheme.getCssStyle(colorTheme)).toExternalForm());
+            scene.getStylesheets().add(getClass().getResource(FontSize.getCssStyle(fontSize)).toExternalForm());
+
+        }
     }
 }

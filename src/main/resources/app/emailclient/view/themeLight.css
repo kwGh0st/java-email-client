@@ -1,0 +1,35 @@
+*{
+    -fx-background-color: white;
+
+}
+
+.big{
+   -fx-font-size: 16pt;
+}
+PasswordField, TextField, Label, Button, TreeView {
+    -fx-background-color: #9bbec4;
+}
+Button, Label, ChoiceBox, Slider, MenuBar {
+    -fx-text-fill: black;
+}
+Button {
+    -fx-background-color: #b2ccd1;
+}
+Button:hover {
+    -fx-background-color: #9bbec4;
+}
+ChoiceBox > *{
+    -fx-background-color: #b2ccd1;
+}
+Slider .axis {
+    -fx-tick-label-fill: white;
+}
+Slider .track{
+    -fx-background-color: #b2ccd1;
+}
+Slider .track:hover{
+    -fx-background-color: #9bbec4;
+}
+Slider .thumb{
+    -fx-background-color: #394345;
+}

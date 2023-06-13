@@ -9,8 +9,8 @@ import javafx.concurrent.Task;
 import javax.mail.*;
 
 public class LoginService extends Service<EmailLoginResult> {
-    private EmailManager emailManager;
-    private EmailAccount emailAccount;
+    private final EmailManager emailManager;
+    private final EmailAccount emailAccount;
 
     public LoginService(EmailManager emailManager, EmailAccount emailAccount) {
         this.emailManager = emailManager;
@@ -30,6 +30,7 @@ public class LoginService extends Service<EmailLoginResult> {
             Store store = session.getStore("imaps");
             store.connect(emailAccount.getProperties().getProperty("incomingHost"), emailAccount.getName(), emailAccount.getPassword());
             emailAccount.setStore(store);
+            emailManager.addEmailAccount(emailAccount);
         } catch (AuthenticationFailedException ex) {
             ex.printStackTrace();
             return EmailLoginResult.FAILED_BY_CREDENTIALS;

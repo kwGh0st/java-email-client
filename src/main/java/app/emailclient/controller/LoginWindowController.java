@@ -43,10 +43,15 @@ public class LoginWindowController extends BaseController {
             loginService.setOnSucceeded(event -> {
                 EmailLoginResult emailLoginResult = loginService.getValue();
                 System.out.println(emailLoginResult);
-                if (emailLoginResult == EmailLoginResult.SUCCESS) {
-                    viewFactory.showMainWindow();
-                    Stage stage = (Stage) loginButton.getScene().getWindow();
-                    viewFactory.closeStage(stage);
+                switch (emailLoginResult) {
+                    case SUCCESS -> {
+                        viewFactory.showMainWindow();
+                        Stage stage = (Stage) loginButton.getScene().getWindow();
+                        viewFactory.closeStage(stage);
+                    }
+                    case FAILED_BY_CREDENTIALS -> errorLabel.setText("Wrong email address or password!");
+                    case FAILED_BY_NETWORK -> errorLabel.setText("Network error, try again.");
+                    case UNEXPECTED_ERROR -> errorLabel.setText("Unexpected error, try again.");
                 }
             });
 

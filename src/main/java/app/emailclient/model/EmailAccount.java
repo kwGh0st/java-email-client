@@ -4,9 +4,9 @@ import javax.mail.Store;
 import java.util.Properties;
 
 public class EmailAccount {
-    private String name;
-    private String password;
-    private Properties properties;
+    private final String name;
+    private final String password;
+    private final Properties properties;
     private Store store;
 
     public EmailAccount(String name, String password) {

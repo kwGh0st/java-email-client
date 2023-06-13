@@ -7,7 +7,7 @@ import app.emailclient.model.EmailTreeItem;
 public class EmailManager {
 
     //Folder handling:
-    private EmailTreeItem<String> foldersRoot = new EmailTreeItem<>("Accounts: ");
+    private final EmailTreeItem<String> foldersRoot = new EmailTreeItem<>("Accounts: ");
 
     public EmailTreeItem<String> getFoldersRoot(){
         return foldersRoot;

@@ -48,7 +48,7 @@ public class LoginService extends Service<EmailLoginResult> {
     protected Task<EmailLoginResult> createTask() {
         return new Task<>() {
             @Override
-            protected EmailLoginResult call() throws Exception {
+            protected EmailLoginResult call() {
                 return login();
             }
         };

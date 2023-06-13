@@ -42,7 +42,6 @@ public class FetchFoldersService extends Service<Void> {
                 handleFolders(subFolders, item);
             }
             root.getChildren().add(item);
-            root.setExpanded(true);
         }
     }
 }

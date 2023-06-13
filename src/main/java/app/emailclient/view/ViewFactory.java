@@ -13,12 +13,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ViewFactory {
-    private EmailManager emailManger;
+    private final EmailManager emailManger;
     private ColorTheme colorTheme = ColorTheme.DEFAULT;
     private FontSize fontSize = FontSize.MEDIUM;
-    private List<Stage> activeStages;
+    private final List<Stage> activeStages;
     private boolean mainWindowInitialized = false;
 
     public ViewFactory(EmailManager emailManger) {
@@ -92,9 +93,8 @@ public class ViewFactory {
         for (Stage stage : activeStages) {
             Scene scene = stage.getScene();
             scene.getStylesheets().clear();
-            scene.getStylesheets().add(getClass().getResource(ColorTheme.getCssStyle(colorTheme)).toExternalForm());
-            scene.getStylesheets().add(getClass().getResource(FontSize.getCssStyle(fontSize)).toExternalForm());
-
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(ColorTheme.getCssStyle(colorTheme))).toExternalForm());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(FontSize.getCssStyle(fontSize))).toExternalForm());
         }
     }
 }

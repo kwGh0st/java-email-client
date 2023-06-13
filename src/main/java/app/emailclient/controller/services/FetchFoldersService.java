@@ -33,10 +33,16 @@ public class FetchFoldersService extends Service<Void> {
         handleFolders(folders, root);
     }
 
-    private void handleFolders(Folder[] folders, EmailTreeItem<String> root) {
+    private void handleFolders(Folder[] folders, EmailTreeItem<String> root) throws MessagingException {
         for (Folder folder : folders) {
             EmailTreeItem<String> item = new EmailTreeItem<>(folder.getName());
+
+            if (folder.getType() == 3 || folder.getType() == 2) {
+                Folder[] subFolders = folder.list();
+                handleFolders(subFolders, item);
+            }
             root.getChildren().add(item);
+            root.setExpanded(true);
         }
     }
 }

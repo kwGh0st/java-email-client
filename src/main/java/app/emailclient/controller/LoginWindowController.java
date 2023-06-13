@@ -45,7 +45,9 @@ public class LoginWindowController extends BaseController {
                 System.out.println(emailLoginResult);
                 switch (emailLoginResult) {
                     case SUCCESS -> {
-                        viewFactory.showMainWindow();
+                        if (!viewFactory.isMainWindowInitialized()) {
+                            viewFactory.showMainWindow();
+                        }
                         Stage stage = (Stage) loginButton.getScene().getWindow();
                         viewFactory.closeStage(stage);
                     }

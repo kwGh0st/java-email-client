@@ -19,6 +19,7 @@ public class ViewFactory {
     private ColorTheme colorTheme = ColorTheme.DEFAULT;
     private FontSize fontSize = FontSize.MEDIUM;
     private List<Stage> activeStages;
+    private boolean mainWindowInitialized = false;
 
     public ViewFactory(EmailManager emailManger) {
         this.emailManger = emailManger;
@@ -33,6 +34,7 @@ public class ViewFactory {
     public void showMainWindow() {
         BaseController controller = new MainWindowController(this, emailManger, "MainWindow.fxml");
         initStage(controller);
+        mainWindowInitialized = true;
     }
 
     public void showOptionsWindow() {
@@ -80,6 +82,10 @@ public class ViewFactory {
 
     public void setFontSize(FontSize fontSize) {
         this.fontSize = fontSize;
+    }
+
+    public boolean isMainWindowInitialized() {
+        return mainWindowInitialized;
     }
 
     public void updateStyles() {

@@ -1,5 +1,6 @@
 package app.emailclient.controller.services;
 
+import app.emailclient.model.EmailMessage;
 import app.emailclient.model.EmailTreeItem;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -57,7 +58,7 @@ public class FetchFoldersService extends Service<Void> {
                             int messagesCount = folder.getMessageCount();
 
                             for (int i = messagesCount; i > 0; i--) {
-                                System.out.println(folder.getMessage(i).getSubject());
+                                item.addMessage(folder.getMessage(i));
                             }
                         }
                         return null;

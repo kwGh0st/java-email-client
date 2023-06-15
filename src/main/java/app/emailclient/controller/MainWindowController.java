@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class MainWindowController extends BaseController implements Initializable {
     @FXML
-    private TableColumn<Date, SimpleObjectProperty<Date>> dateColumn;
+    private TableColumn<EmailMessage, Date> dateColumn;
 
     @FXML
     private TableView<EmailMessage> emailTableView;
@@ -34,16 +34,16 @@ public class MainWindowController extends BaseController implements Initializabl
     private MenuBar menuBar;
 
     @FXML
-    private TableColumn<String, SimpleStringProperty> recipientColumn;
+    private TableColumn<EmailMessage, String> recipientColumn;
 
     @FXML
-    private TableColumn<String, SimpleStringProperty> senderColumn;
+    private TableColumn<EmailMessage, String> senderColumn;
 
     @FXML
-    private TableColumn<Integer, SimpleIntegerProperty> sizeColumn;
+    private TableColumn<EmailMessage, Integer> sizeColumn;
 
     @FXML
-    private TableColumn<String, SimpleStringProperty> subjectColumn;
+    private TableColumn<EmailMessage, String> subjectColumn;
 
     @FXML
     private MenuItem addAccountButton;
@@ -71,11 +71,11 @@ public class MainWindowController extends BaseController implements Initializabl
     }
 
     private void setUpTableView() {
-        subjectColumn.setCellValueFactory(new PropertyValueFactory<String, SimpleStringProperty>("subject"));
-        recipientColumn.setCellValueFactory(new PropertyValueFactory<String, SimpleStringProperty>("recipient"));
-        senderColumn.setCellValueFactory(new PropertyValueFactory<String, SimpleStringProperty>("sender"));
-        sizeColumn.setCellValueFactory(new PropertyValueFactory<Integer, SimpleIntegerProperty>("size"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<Date, SimpleObjectProperty<Date>>("date"));
+        subjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
+        recipientColumn.setCellValueFactory(new PropertyValueFactory<>("recipient"));
+        senderColumn.setCellValueFactory(new PropertyValueFactory<>("sender"));
+        sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
     }
 
     private void setUpFolderSelection() {

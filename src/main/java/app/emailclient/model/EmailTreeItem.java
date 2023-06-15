@@ -10,8 +10,8 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 public class EmailTreeItem<String> extends TreeItem<String> {
-    private String name;
-    private ObservableList<EmailMessage> emailMessages;
+    private final String name;
+    private final ObservableList<EmailMessage> emailMessages;
     private int unreadMessagesCount;
 
     public EmailTreeItem(String name) {

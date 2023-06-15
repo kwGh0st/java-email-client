@@ -6,16 +6,18 @@ import javafx.beans.property.SimpleStringProperty;
 
 import javax.mail.Message;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EmailMessage {
 
-    private SimpleStringProperty subject;
-    private SimpleStringProperty sender;
-    private SimpleStringProperty recipient;
-    private SimpleIntegerProperty size;
-    private SimpleObjectProperty<Date> date;
+    private final SimpleStringProperty subject;
+    private final SimpleStringProperty sender;
+    private final SimpleStringProperty recipient;
+    private final SimpleIntegerProperty size;
+    private final SimpleObjectProperty<Date> date;
     private boolean isRead;
-    private Message message;
+    private final Message message;
 
     public EmailMessage(String subject, String sender, String recipient, int size, Date date, boolean isRead, Message message) {
         this.subject = new SimpleStringProperty(subject);

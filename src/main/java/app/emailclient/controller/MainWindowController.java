@@ -1,13 +1,11 @@
 package app.emailclient.controller;
 
 import app.emailclient.EmailManager;
+import app.emailclient.controller.services.MessageRenderService;
 import app.emailclient.model.EmailMessage;
 import app.emailclient.model.EmailTreeItem;
 import app.emailclient.model.SizeInteger;
 import app.emailclient.view.ViewFactory;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -50,6 +48,8 @@ public class MainWindowController extends BaseController implements Initializabl
     @FXML
     private MenuItem addAccountButton;
 
+    private MessageRenderService messageRenderService;
+
 
     public MainWindowController(ViewFactory viewFactory, EmailManager emailManager, String fxmlName) {
         super(viewFactory, emailManager, fxmlName);
@@ -71,7 +71,24 @@ public class MainWindowController extends BaseController implements Initializabl
         setUpTableView();
         setUpFolderSelection();
         setUpBoldRows();
+        setUpMessageRenderService();
+        setUpMessageSelection();
 
+    }
+
+    private void setUpMessageSelection() {
+        emailTableView.setOnMouseClicked(event -> {
+            EmailMessage item = emailTableView.getSelectionModel().getSelectedItem();
+
+            if (item != null) {
+                messageRenderService.setEmailMessage(item);
+                messageRenderService.restart();
+            }
+        });
+    }
+
+    private void setUpMessageRenderService() {
+        messageRenderService = new MessageRenderService(emailWebView.getEngine());
     }
 
     private void setUpBoldRows() {
@@ -96,7 +113,7 @@ public class MainWindowController extends BaseController implements Initializabl
     }
 
     private void setUpFolderSelection() {
-        emailTableView.setOnMouseClicked(event -> {
+        emailTreeView.setOnMouseClicked(event -> {
             EmailTreeItem<String> item = (EmailTreeItem<String>) emailTreeView.getSelectionModel().getSelectedItem();
 
             if (item != null) {

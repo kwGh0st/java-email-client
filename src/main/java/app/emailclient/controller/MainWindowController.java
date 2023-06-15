@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.web.WebView;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.Date;
@@ -68,14 +69,29 @@ public class MainWindowController extends BaseController implements Initializabl
         setUpEmailsTreeView();
         setUpTableView();
         setUpFolderSelection();
+        setUpBoldRows();
+
     }
 
-    private void setUpTableView() {
-        subjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
-        recipientColumn.setCellValueFactory(new PropertyValueFactory<>("recipient"));
-        senderColumn.setCellValueFactory(new PropertyValueFactory<>("sender"));
-        sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+    private void setUpBoldRows() {
+        emailTableView.setRowFactory(new Callback<TableView<EmailMessage>, TableRow<EmailMessage>>() {
+            @Override
+            public TableRow<EmailMessage> call(TableView<EmailMessage> param) {
+                return new TableRow<EmailMessage>() {
+                  @Override
+                  protected void updateItem(EmailMessage item, boolean empty) {
+                      super.updateItem(item, empty);
+                      if (item !=null) {
+                          if(item.isRead()) {
+                              setStyle("");
+                          } else {
+                              setStyle("-fx-font-weight: bold");
+                          }
+                      }
+                  }
+                };
+            }
+        });
     }
 
     private void setUpFolderSelection() {
@@ -86,6 +102,14 @@ public class MainWindowController extends BaseController implements Initializabl
                 emailTableView.setItems(item.getEmailMessages());
             }
         });
+    }
+
+    private void setUpTableView() {
+        subjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
+        recipientColumn.setCellValueFactory(new PropertyValueFactory<>("recipient"));
+        senderColumn.setCellValueFactory(new PropertyValueFactory<>("sender"));
+        sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
     }
 
     private void setUpEmailsTreeView() {

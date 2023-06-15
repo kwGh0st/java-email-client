@@ -3,6 +3,7 @@ package app.emailclient.controller;
 import app.emailclient.EmailManager;
 import app.emailclient.model.EmailMessage;
 import app.emailclient.model.EmailTreeItem;
+import app.emailclient.model.SizeInteger;
 import app.emailclient.view.ViewFactory;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -41,7 +42,7 @@ public class MainWindowController extends BaseController implements Initializabl
     private TableColumn<EmailMessage, String> senderColumn;
 
     @FXML
-    private TableColumn<EmailMessage, Integer> sizeColumn;
+    private TableColumn<EmailMessage, SizeInteger> sizeColumn;
 
     @FXML
     private TableColumn<EmailMessage, String> subjectColumn;
@@ -74,21 +75,21 @@ public class MainWindowController extends BaseController implements Initializabl
     }
 
     private void setUpBoldRows() {
-        emailTableView.setRowFactory(new Callback<TableView<EmailMessage>, TableRow<EmailMessage>>() {
+        emailTableView.setRowFactory(new Callback<>() {
             @Override
             public TableRow<EmailMessage> call(TableView<EmailMessage> param) {
-                return new TableRow<EmailMessage>() {
-                  @Override
-                  protected void updateItem(EmailMessage item, boolean empty) {
-                      super.updateItem(item, empty);
-                      if (item !=null) {
-                          if(item.isRead()) {
-                              setStyle("");
-                          } else {
-                              setStyle("-fx-font-weight: bold");
-                          }
-                      }
-                  }
+                return new TableRow<>() {
+                    @Override
+                    protected void updateItem(EmailMessage item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            if (item.isRead()) {
+                                setStyle("");
+                            } else {
+                                setStyle("-fx-font-weight: bold");
+                            }
+                        }
+                    }
                 };
             }
         });

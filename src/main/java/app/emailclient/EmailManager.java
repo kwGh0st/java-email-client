@@ -59,4 +59,15 @@ public class EmailManager {
         selectedMessage.getMessage().setFlag(Flags.Flag.SEEN, true);
         selectedFolder.decrementMessagesCount();
     }
+
+    public void setUnRead() throws MessagingException {
+        selectedMessage.setRead(false);
+        selectedMessage.getMessage().setFlag(Flags.Flag.SEEN, false);
+        selectedFolder.incrementMessagesCount();
+    }
+
+    public void deleteMessage() throws MessagingException {
+        selectedMessage.getMessage().setFlag(Flags.Flag.DELETED, true);
+        selectedFolder.getEmailMessages().remove(selectedMessage);
+    }
 }

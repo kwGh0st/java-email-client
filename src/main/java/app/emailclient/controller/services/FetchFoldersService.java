@@ -60,7 +60,7 @@ public class FetchFoldersService extends Service<Void> {
                 for (int i = 0; i < e.getMessages().length; i++) {
                     try {
                         Message message = folder.getMessage(folder.getMessageCount() - i);
-                        item.addMessage(message);
+                        item.addMessageToTop(message);
                     } catch (MessagingException messagingException) {
                         messagingException.printStackTrace();
                     }

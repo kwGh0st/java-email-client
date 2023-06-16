@@ -81,7 +81,7 @@ public class FetchFoldersService extends Service<Void> {
                 return new Task() {
                     @Override
                     protected Object call() throws Exception {
-                        if (folder.getType() == Folder.HOLDS_MESSAGES) {
+                        if (folder.getType() == Folder.HOLDS_MESSAGES || folder.getType() == (Folder.HOLDS_MESSAGES + Folder.HOLDS_FOLDERS)) {
                             folder.open(Folder.READ_WRITE);
                             int messagesCount = folder.getMessageCount();
 

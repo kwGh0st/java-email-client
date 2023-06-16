@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.web.WebView;
 import javafx.util.Callback;
 
+import javax.mail.MessagingException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -81,6 +82,14 @@ public class MainWindowController extends BaseController implements Initializabl
             EmailMessage item = emailTableView.getSelectionModel().getSelectedItem();
 
             if (item != null) {
+                emailManager.setSelectedMessage(item);
+                if (!item.isRead()) {
+                    try {
+                        emailManager.setRead();
+                    } catch (MessagingException e) {
+                        e.printStackTrace();
+                    }
+                }
                 messageRenderService.setEmailMessage(item);
                 messageRenderService.restart();
             }
@@ -117,6 +126,7 @@ public class MainWindowController extends BaseController implements Initializabl
             EmailTreeItem<String> item = (EmailTreeItem<String>) emailTreeView.getSelectionModel().getSelectedItem();
 
             if (item != null) {
+                emailManager.setSelectedFolder(item);
                 emailTableView.setItems(item.getEmailMessages());
             }
         });

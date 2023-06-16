@@ -12,9 +12,9 @@ import javax.mail.Multipart;
 import java.io.IOException;
 
 public class MessageRenderService extends Service {
-    private WebEngine webEngine;
+    private final WebEngine webEngine;
     private EmailMessage emailMessage;
-    private StringBuffer stringBuffer;
+    private final StringBuffer stringBuffer;
 
     public MessageRenderService(WebEngine webEngine) {
         this.webEngine = webEngine;

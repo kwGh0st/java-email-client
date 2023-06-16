@@ -1,13 +1,10 @@
 package app.emailclient.model;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import javax.mail.Message;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class EmailMessage {
 
@@ -23,7 +20,7 @@ public class EmailMessage {
         this.subject = new SimpleStringProperty(subject);
         this.sender = new SimpleStringProperty(sender);
         this.recipient = new SimpleStringProperty(recipient);
-        this.size = new SimpleObjectProperty<SizeInteger>(new SizeInteger(size));
+        this.size = new SimpleObjectProperty<>(new SizeInteger(size));
         this.date = new SimpleObjectProperty<>(date);
         this.isRead = isRead;
         this.message = message;

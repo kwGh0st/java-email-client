@@ -1,6 +1,5 @@
 package app.emailclient.controller.services;
 
-import app.emailclient.model.EmailMessage;
 import app.emailclient.model.EmailTreeItem;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;

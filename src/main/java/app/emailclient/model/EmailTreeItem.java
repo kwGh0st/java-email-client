@@ -37,7 +37,7 @@ public class EmailTreeItem<String> extends TreeItem<String> {
                 message
         );
 
-        emailMessages.add(emailMessage);
+        emailMessages.add(0, emailMessage);
 
         if (!messageIsRead) {
             incrementMessagesCount();

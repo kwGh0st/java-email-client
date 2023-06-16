@@ -7,7 +7,7 @@ import javax.mail.Folder;
 import java.util.List;
 
 public class FolderUpdaterService extends Service {
-    private List<Folder> folderList;
+    private final List<Folder> folderList;
 
     public FolderUpdaterService(List<Folder> folderList) {
         this.folderList = folderList;
@@ -18,13 +18,18 @@ public class FolderUpdaterService extends Service {
         return new Task() {
             @Override
             protected Object call() throws Exception {
-                Thread.sleep(5000);
-                for (Folder folder : folderList) {
-                    if (folder.getType() != Folder.HOLDS_FOLDERS && folder.isOpen()) {
-                        folder.getMessageCount();
+                while (true) {
+                    try {
+                        Thread.sleep(5000);
+                        for (Folder folder : folderList) {
+                            if (folder.getType() != Folder.HOLDS_FOLDERS && folder.isOpen()) {
+                                folder.getMessageCount();
+                            }
+                        }
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
                     }
                 }
-                return null;
             }
         };
     }

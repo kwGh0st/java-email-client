@@ -27,4 +27,9 @@ public class ComposeMessageController extends BaseController {
     public ComposeMessageController(ViewFactory viewFactory, EmailManager emailManager, String fxmlName) {
         super(viewFactory, emailManager, fxmlName);
     }
+
+    @FXML
+    void setOnSendButtonAction() {
+
+    }
 }

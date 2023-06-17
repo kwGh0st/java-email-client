@@ -1,10 +1,7 @@
 package app.emailclient.view;
 
 import app.emailclient.EmailManager;
-import app.emailclient.controller.BaseController;
-import app.emailclient.controller.LoginWindowController;
-import app.emailclient.controller.MainWindowController;
-import app.emailclient.controller.OptionsWindowController;
+import app.emailclient.controller.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -96,5 +93,10 @@ public class ViewFactory {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(ColorTheme.getCssStyle(colorTheme))).toExternalForm());
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(FontSize.getCssStyle(fontSize))).toExternalForm());
         }
+    }
+
+    public void showComposeMessageWindow() {
+        BaseController controller = new ComposeMessageController(this, emailManger, "ComposeMessageWindow.fxml");
+        initStage(controller);
     }
 }

@@ -15,7 +15,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="composeMessageOption" mnemonicParsing="false" onAction="#setOnComposeMessage" text="Compose message" />
                   <MenuItem fx:id="addAccountButton" mnemonicParsing="false" onAction="#onAddAccountAction" text="Add account" />
             </items>
           </Menu>

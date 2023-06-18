@@ -1,5 +1,6 @@
 package app.emailclient.model;
 
+import javax.mail.Session;
 import javax.mail.Store;
 import java.util.Properties;
 
@@ -8,6 +9,7 @@ public class EmailAccount {
     private final String password;
     private final Properties properties;
     private Store store;
+    private Session session;
 
     public EmailAccount(String name, String password) {
         this.name = name;
@@ -46,5 +48,13 @@ public class EmailAccount {
     @Override
     public String toString() {
         return name;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
     }
 }

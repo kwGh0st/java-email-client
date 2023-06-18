@@ -42,4 +42,9 @@ public class EmailAccount {
     public Store getStore() {
         return store;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

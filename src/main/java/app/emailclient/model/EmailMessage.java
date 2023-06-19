@@ -64,6 +64,14 @@ public class EmailMessage {
         this.isRead = isRead;
     }
 
+    public List<MimeBodyPart> getAttachments() {
+        return attachments;
+    }
+
+    public boolean isHasAttachments() {
+        return hasAttachments;
+    }
+
     public void addAttachment(MimeBodyPart mbp) throws MessagingException {
         attachments.add(mbp);
         hasAttachments = true;

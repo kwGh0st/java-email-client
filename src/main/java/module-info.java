@@ -5,7 +5,6 @@ module app.emailclient {
     requires java.mail;
     requires activation;
 
-
     opens app.emailclient to javafx.fxml;
     opens app.emailclient.controller to javafx.fxml;
     exports app.emailclient;

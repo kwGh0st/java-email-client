@@ -51,8 +51,6 @@ public class EmailTreeItem<String> extends TreeItem<String> {
             incrementMessagesCount();
         }
 
-        System.out.println("Added to " + name + " " + message.getSubject());
-
         return emailMessage;
     }
 

@@ -9,6 +9,7 @@ import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
+import javax.mail.internet.MimeBodyPart;
 import java.io.IOException;
 
 public class MessageRenderService extends Service {
@@ -46,6 +47,7 @@ public class MessageRenderService extends Service {
         stringBuffer.setLength(0);
         Message message = emailMessage.getMessage();
         String contentType = message.getContentType();
+        System.out.println(contentType);
 
         if (isSimpleContentType(contentType)) {
             stringBuffer.append(message.getContent().toString());
@@ -58,8 +60,10 @@ public class MessageRenderService extends Service {
     private void loadMultipart(Multipart multipart, StringBuffer stringBuffer) throws MessagingException, IOException {
         for (int i = 0; i < multipart.getCount(); i++) {
             BodyPart bodyPart = multipart.getBodyPart(i);
-
-            if (isSimpleContentType(bodyPart.getContentType())) {
+            if (BodyPart.ATTACHMENT.equalsIgnoreCase(bodyPart.getDisposition())) {
+                MimeBodyPart mbp = (MimeBodyPart) bodyPart;
+                emailMessage.addAttachment(mbp);
+            } else if (isSimpleContentType(bodyPart.getContentType())) {
                 stringBuffer.append(bodyPart.getContent().toString());
             } else {
                 Multipart multipart1 = (Multipart) bodyPart.getContent();
@@ -72,6 +76,5 @@ public class MessageRenderService extends Service {
     private boolean isSimpleContentType(String contentType) {
         return !contentType.contains("multipart");
     }
-
 
 }

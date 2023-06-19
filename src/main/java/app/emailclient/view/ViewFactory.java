@@ -99,4 +99,9 @@ public class ViewFactory {
         BaseController controller = new ComposeMessageController(this, emailManger, "ComposeMessageWindow.fxml");
         initStage(controller);
     }
+
+    public void showMessageDetailsWindow() {
+        BaseController controller = new MessageDetailsController(this, emailManger, "MessageDetailsWindow.fxml");
+        initStage(controller);
+    }
 }

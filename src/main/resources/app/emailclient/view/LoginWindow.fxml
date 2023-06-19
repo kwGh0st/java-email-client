@@ -12,11 +12,11 @@
       <Button fx:id="loginButton" focusTraversable="false" layoutX="196.0" layoutY="273.0" mnemonicParsing="false" onAction="#onLoginButtonAction" prefHeight="35.0" prefWidth="208.0" text="Login" />
       <Label fx:id="addressLabel" alignment="CENTER" layoutX="21.0" layoutY="109.0" prefHeight="17.0" prefWidth="81.0" text="Email Adress" textAlignment="CENTER" />
       <Label fx:id="passwordLabel" alignment="CENTER" layoutX="21.0" layoutY="155.0" prefHeight="17.0" prefWidth="81.0" text="Password" />
-      <TextField fx:id="addressField" focusTraversable="false" layoutX="141.0" layoutY="105.0" prefHeight="25.0" prefWidth="399.0" />
+      <TextField fx:id="addressField"  layoutX="141.0" layoutY="105.0" prefHeight="25.0" prefWidth="399.0" />
       <Label fx:id="errorLabel" alignment="CENTER" layoutX="101.0" layoutY="350.0" prefHeight="0.0" prefWidth="399.0">
          <font>
             <Font size="17.0" />
          </font></Label>
-      <PasswordField fx:id="passwordField" layoutX="141.0" layoutY="151.0" prefHeight="25.0" prefWidth="399.0" />
+      <PasswordField fx:id="passwordField" focusTraversable="false" layoutX="141.0" layoutY="151.0" prefHeight="25.0" prefWidth="399.0" />
    </children>
 </AnchorPane>

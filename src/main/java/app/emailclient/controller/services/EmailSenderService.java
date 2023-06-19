@@ -11,10 +11,10 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 public class EmailSenderService extends Service<EmailSendingResult> {
-    private EmailAccount emailAccount;
-    private String subject;
-    private String recipient;
-    private String content;
+    private final EmailAccount emailAccount;
+    private final String subject;
+    private final String recipient;
+    private final String content;
 
     public EmailSenderService(EmailAccount emailAccount, String subject, String recipient, String content) {
         this.emailAccount = emailAccount;

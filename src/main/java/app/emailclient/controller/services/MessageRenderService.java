@@ -19,9 +19,7 @@ public class MessageRenderService extends Service {
     public MessageRenderService(WebEngine webEngine) {
         this.webEngine = webEngine;
         this.stringBuffer = new StringBuffer();
-        this.setOnSucceeded(event -> {
-            displayMessage();
-        });
+        this.setOnSucceeded(event -> displayMessage());
     }
 
     public void setEmailMessage(EmailMessage emailMessage) {
@@ -51,27 +49,28 @@ public class MessageRenderService extends Service {
 
         if (isSimpleContentType(contentType)) {
             stringBuffer.append(message.getContent().toString());
-        } else if (isMultiPartContentType(contentType)) {
+        } else {
             Multipart multipart =  (Multipart) message.getContent();
-
-            for (int i = 0; i < multipart.getCount(); i++) {
-                BodyPart bodyPart = multipart.getBodyPart(i);
-
-                if (isSimpleContentType(bodyPart.getContentType())) {
-                    stringBuffer.append(bodyPart.getContent().toString());
-                }
-            }
+            loadMultipart(multipart, stringBuffer);
         }
     }
 
-    private boolean isSimpleContentType(String contentType) {
-        return contentType.contains("HTML/MIXED")
-                || contentType.contains("mixed")
-                || contentType.contains("text");
+    private void loadMultipart(Multipart multipart, StringBuffer stringBuffer) throws MessagingException, IOException {
+        for (int i = 0; i < multipart.getCount(); i++) {
+            BodyPart bodyPart = multipart.getBodyPart(i);
+
+            if (isSimpleContentType(bodyPart.getContentType())) {
+                stringBuffer.append(bodyPart.getContent().toString());
+            } else {
+                Multipart multipart1 = (Multipart) bodyPart.getContent();
+                loadMultipart(multipart1, stringBuffer);
+            }
+        }
+
     }
 
-    private boolean isMultiPartContentType(String contentType) {
-        return contentType.contains("multipart");
+    private boolean isSimpleContentType(String contentType) {
+        return !contentType.contains("multipart");
     }
 
 

@@ -49,9 +49,9 @@ public class MainWindowController extends BaseController implements Initializabl
     @FXML
     private MenuItem addAccountButton;
 
-    private MenuItem markAsUnreadMenuItem = new MenuItem("Mark as unread");
-    private MenuItem deleteMessageMenuItem = new MenuItem("Delete message");
-    private MenuItem showMessageDetailsMenuItem = new MenuItem("View details");
+    private final MenuItem markAsUnreadMenuItem = new MenuItem("Mark as unread");
+    private final MenuItem deleteMessageMenuItem = new MenuItem("Delete message");
+    private final MenuItem showMessageDetailsMenuItem = new MenuItem("View details");
 
     private MessageRenderService messageRenderService;
 

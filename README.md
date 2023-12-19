@@ -45,7 +45,3 @@ Contributions to improve the application, add features, or address issues are we
 ## License
 
 Feel free to use, modify, and distribute this project in accordance with the specified license.
-
----
-
-This README provides an overview of the Email Client application. It details its features, usage instructions, project structure, and invites contributions for its improvement.
